@@ -4,7 +4,7 @@ import { ProductService } from './product.service';
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
-  @Post('/product')
+  @Post()
   async create(@Body() product: any) {
     return this.productService.createProduct(product);
   }
@@ -12,5 +12,10 @@ export class ProductController {
   @Get()
   async list() {
     return this.productService.list();
+  }
+
+  @Get('/count')
+  async count() {
+    return this.productService.count();
   }
 }
